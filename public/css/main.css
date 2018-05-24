@@ -1,0 +1,37 @@
+body {
+    background-color: rgb(1, 1, 77);
+}
+h1 {
+    color: white;
+    text-align: center;
+}
+h2 {
+    color: rgb(206, 152, 194);
+    text-align: center;
+}
+#feed {   
+    background-color: gainsboro;
+    position: relative;
+    float: left;
+    height: 400px;
+    width: 100%;
+}
+#saved{
+    background-color: gainsboro;
+    position: relative;
+    float: left;
+    height: 200px;
+    width: 100%;
+}
+#save {
+    position: relative;
+    float: left;
+}
+#box {
+    
+}
+#links {
+    position: relative;
+    float: left;
+    font-size: 20px;
+}

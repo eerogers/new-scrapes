@@ -6,6 +6,14 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 var mongoose = require('mongoose')
 var db = require('./models')
+// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+
+// Set mongoose to leverage built in JavaScript ES6 Promises
+// Connect to the Mongo DB
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
+
 const options = {
     autoIndex: false, // Don't build indexes
     reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
@@ -14,10 +22,10 @@ const options = {
     // If not connected, return errors immediately rather than waiting for reconnect
     bufferMaxEntries: 0
 };
-mongoose.connect('mongodb://localhost:27017/newscrapes', options).then(
-    () => { /** ready to use. The `mongoose.connect()` promise resolves to undefined. */ },
-    err => { /** handle initial connection error */ }
-  );
+//mongoose.connect('mongodb://localhost:27017/newscrapes', options).then(
+//    () => { /** ready to use. The `mongoose.connect()` promise resolves to undefined. */ },
+//    err => { /** handle initial connection error */ }
+//  );
 var cheerio= require('cheerio')
 var request = require('request')
 var array = []

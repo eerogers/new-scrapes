@@ -10,10 +10,10 @@
 <body>
     <h1>NEW SCRAPES</h1>
     <h2>All the News that's Fit to Scrape</h2>
-    <h1>New Articles</h1>
-    <div id="feed"></div>
     <h1>Saved Articles</h1>
     <div id="saved"></div>
+    <h1>New Articles</h1>
+    <div id="feed"></div>
 
 <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js" 
@@ -24,12 +24,12 @@ console.log("okay")
 $.get("/newscrape", function(data) {
     console.log(data)
     var now = moment()
-    for(i=0; i<10; i++){
+    for(i=0; i<data.length; i++){
         then = moment(data[i].when)
         console.log(now.diff(then, "days"))
-      //  if ((now.diff(then, "days"))<4){
+        if ((now.diff(then, "days"))<1){
             $("#feed").append("<div id='box "+data[i]._id+"'><a id ='links' href='"+data[i].link+"'><div>"+data[i].title+"</div></a><button id='save "+data[i]._id+"'>Save</button></div></br>")
-      //  }
+        }
     }
 })
 </script>    
